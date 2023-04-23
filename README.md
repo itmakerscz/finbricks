@@ -1,6 +1,6 @@
 # Finbricks Chat App
 
-Brief description of the project.
+Voice chatbot
 
 ## Table of Contents
 
