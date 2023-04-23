@@ -32,8 +32,8 @@ export default {
       mediaRecorder: null,
       chunks: [],
       stream: null,
-      apiUrl: 'http://localhost:8000/transcribe',
-      botUrl: 'http://localhost:8000/chatbot',
+      apiUrl: 'http://localhost:8081/transcribe',
+      botUrl: 'http://localhost:8081/chatbot',
       inputMessage: '',
       audioBlob: null
     };
@@ -92,7 +92,8 @@ export default {
         const response = await axios.post(this.botUrl, {
           message: this.inputMessage,
       });
-      this.messages.push(response.data.message);
+      //console.log(response.data)
+      this.messages.push(response.data);
       } catch (error) {
         console.error(error);
       }
