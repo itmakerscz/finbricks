@@ -11,6 +11,6 @@ services:
       - backend
 
   backend:
-    image: finbricks_chat_app
+    image: finbricks-chat-app
     ports:
       - "5000:5000"

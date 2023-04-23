@@ -9,10 +9,15 @@ Brief description of the project.
 - [API Documentation](#api-documentation)
 - [Contributing](#contributing)
 - [License](#license)
+- [Project setup](#project-setup)
 
 ## Installation
 
 Brief instructions on how to install and set up the project.
+
+docker build -t finbricks-chat-app:dev .
+
+docker run -v ${PWD}:/app -v /app/node_modules -p 8081:8080 --rm finbricks-chat-app:dev
 
 ## Usage
 

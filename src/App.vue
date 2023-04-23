@@ -33,6 +33,7 @@ export default {
       chunks: [],
       stream: null,
       apiUrl: 'http://localhost:8000/transcribe',
+      botUrl: 'http://localhost:8000/chatbot',
       inputMessage: '',
       audioBlob: null
     };
@@ -83,21 +84,19 @@ export default {
 
       }
       if (this.inputMessage) {
-        // Send the user's message to the chatbot API endpoint
-        try {
-          const response = await axios.post('https://localhost:8080/chatbot', {
-            message: this.inputMessage,
-          });
-
-        // Add the chatbot's response to the chat window
-        this.messages.push(response.data.message);
-        } catch (error) {
-          console.error(error);
-        }
-
         this.messages.push(this.inputMessage);
         this.inputMessage = '';
       }
+
+      try {
+        const response = await axios.post(this.botUrl, {
+          message: this.inputMessage,
+      });
+      this.messages.push(response.data.message);
+      } catch (error) {
+        console.error(error);
+      }
+
     }
   }
 };
@@ -131,7 +130,7 @@ h1{
   flex-grow: 1;
   padding: 1rem;
   overflow-y: scroll;
-  background-color: #f7f7f7;
+  background-color: #fff;
   height: 60vh;
   opacity: 0.4;
 }
@@ -163,7 +162,7 @@ h1{
   margin: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
-  color: #fff;
+  color: none;
   background-color: none;
   background-size: cover;
   border: none;
