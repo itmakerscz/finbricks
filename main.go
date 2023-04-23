@@ -14,12 +14,12 @@ type Message struct {
 }
 
 func ChatBot(w http.ResponseWriter, r *http.Request) {
-
+	//
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Authorization")
 	w.Header().Set("Content-Type", "application/json")
-
+	//
 	m := Message{"Alice", "Hello", 1294706395881547000}
 	b, err := json.Marshal(m)
 	if err != nil {

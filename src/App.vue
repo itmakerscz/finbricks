@@ -93,6 +93,7 @@ export default {
           message: this.inputMessage,
       });
       //console.log(response.data)
+      
       this.messages.push(response.data);
       } catch (error) {
         console.error(error);
