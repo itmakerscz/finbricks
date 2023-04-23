@@ -10,11 +10,10 @@
       <div class="chat-input">
         <input type="text" v-model="inputMessage" placeholder="Type a message...">
         <button class="send-button" @click="sendMessage" :disabled="!inputMessage && !audioBlob">
-          Send
         </button>
         <button class="record-button" @click="toggleRecording">
-          <span v-if="!recording">Record</span>
-          <span v-else>Stop</span>
+          <span v-if="!recording"></span>
+          <span v-else></span>
         </button>
       </div>
     </div>
@@ -91,10 +90,11 @@ export default {
           });
 
         // Add the chatbot's response to the chat window
-          this.messages.push(response.data.message);
+        this.messages.push(response.data.message);
         } catch (error) {
           console.error(error);
         }
+
         this.messages.push(this.inputMessage);
         this.inputMessage = '';
       }
@@ -132,7 +132,7 @@ h1{
   padding: 1rem;
   overflow-y: scroll;
   background-color: #f7f7f7;
-  height: 70vh;
+  height: 60vh;
   opacity: 0.4;
 }
 
@@ -160,33 +160,41 @@ h1{
 .chat-input .send-button {
   display: inline-block;
   padding: 0.5rem 1rem;
+  margin: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: none;
+  background-size: cover;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-image: url('./assets/send.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
 }
 
 /* Chat input send button - disabled state */
 .chat-input .send-button:disabled {
-  background-color: #6c757d;
+  background-color: none;
   cursor: not-allowed;
 }
 
 /* Chat input send button - hover state */
 .chat-input .send-button:hover:not(:disabled) {
-  background-color: #0069d9;
+  background-color: none;
 }
 .chat-messages {
   flex-grow: 1;
   padding: 1rem;
   overflow-y: scroll;
-  background-color: #f7f7f7;
+  background-color: #fff;
   flex-direction: column;
   margin: 0.5rem 0;
+  opacity:0.4;
 }
 
 /* Chat message sender name */
@@ -206,7 +214,7 @@ h1{
 
 /* Chat message from current user */
 .chat-message.current-user .message-content {
-  background-color: #6c757d;
+  background-color: none;
   align-self: flex-end;
 }
 
@@ -214,24 +222,31 @@ h1{
 .chat-input .record-button {
   display: inline-block;
   padding: 0.5rem 1rem;
+  margin: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: none;
+  background-size: cover;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-image: url('./assets/voice.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
 }
 
 /* Chat input record button - disabled state */
 .chat-input .record-button:disabled {
-  background-color: #6c757d;
+  background-color: none;
   cursor: not-allowed;
 }
 
 /* Chat input record button - hover state */
 .chat-input .record-button:hover:not(:disabled) {
-  background-color: #0069d9;
+  background-color: none;
 }
 </style>
